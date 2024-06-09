@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
+<head th:replace="common/header :: common-header" />
+<body>
+
+  <div th:replace="adminHome :: navbarAdmin"> </div>
+
+  <div class="container page-content">
+    <table id="table-product" class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Brand</th>
+        <th>Sizes</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Operation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-th-each="product : ${products}">
+        <td th:text="${product.title}"></td>
+        <td><div style="display:flex;"><span th:each="item : ${product.categories}" 
+            th:text="${item.getName()}" class="badge badge-secondary mt-1 mr-1" ></span></div></td>
+        <td><div style="display:flex;"><span th:each="item : ${product.brands}" 
+            th:text="${item.getName()}" class="badge badge-secondary mt-1 mr-1" ></span></div></td>
+        <td><div style="display:flex;"><span th:each="item : ${product.sizes}" 
+            th:text="${item.getValue()}" class="badge badge-secondary mt-1 mr-1" ></span></div></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.stock}"></td>
+        <td><a th:href="@{/product/edit?id=}+${product.id}" class="badge badge-primary">EDIT</a>  
+            <a th:href="@{/product/delete?id=}+${product.id}" class="badge badge-danger">DELETE </a> </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+
+
+  <div th:replace="common/header :: body-scripts"> </div>
+  
+  <script>
+  	$(document).ready(function() {
+	    $('#table-product').DataTable({
+	    	stateSave: true
+	    });
+	} );
+  </script> 
+
+</body>
+</html>

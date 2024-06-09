@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+<head th:replace="common/header :: common-header" />
+
+
+<body class="d-flex flex-column" >
+  <div th:replace="common/header :: navbar"> </div>
+
+  
+  <div class="jumbotron jumbotron-fluid mt-0" th:style="'background-image: url(/image/io.png);'">
+  	<div class="container">
+      <div class="row text-left py-5">   
+         <div class="col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-3 col-xl-6 offset-xl-6 my-auto">  
+        
+            <h1 class="font-weight-bold">Best Product</h1>
+            <a th:href="@{/store}" class="btn btn-success rounded-pill" data-addclass-on-xs="btn-sm">SHOP NOW</a>       
+          </div> 
+      </div>
+  </div>
+  </div>  
+   
+
+  <div th:replace="common/header :: body-scripts"> </div>
+  
+ 
+</body>
+</html>
